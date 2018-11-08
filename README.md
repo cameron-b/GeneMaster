@@ -2,8 +2,9 @@ Takes in results file that follows format:
 
     [Bot#] [Wins] [Turns]
     ...
+    (should be sorted by bot# in ascending order)
 
-* results file should be sorted by bot# in ascending order
+
 
 scores each bot based on total wins/turns and sorts by score
 * currently, score is: wins + (100/turns) * 100
@@ -11,8 +12,10 @@ scores each bot based on total wins/turns and sorts by score
 * should eventually change how turns get added (i.e. if a bot loses, maybe - the turns instead)
 * handled in the ResultsParser class
 
+
 GeneController currently does nothing
 * later
+
 
 to run the example
 

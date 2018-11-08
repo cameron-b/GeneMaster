@@ -20,7 +20,8 @@ public class ResultsParser {
         int botId;
         int botNum;
         int botWins;
-        int botTurns;
+        int botWTurns;
+        int botLTurns;
 
         try {
             reader = new BufferedReader(new FileReader(results));
@@ -36,7 +37,8 @@ public class ResultsParser {
         }
 
         botId = Integer.parseInt(currLine.split(" ")[0]);
-        botTurns = 0;
+        botWTurns = 0;
+        botLTurns = 0;
         botWins = 0;
 
         while(currLine != null) {
@@ -46,17 +48,20 @@ public class ResultsParser {
 
             //if we've moved on to a new bot, add the old one and move on
             if(botNum != botId) {
-                botResults.add(new Bot(botId, botWins, botTurns));
+                botResults.add(new Bot(botId, botWins, botWTurns - botLTurns));
                 botId = botNum;
-                botTurns = 0;
+                botWTurns = 0;
+                botLTurns = 0;
                 botWins = 0;
             }
 
             //like this for testing purposes. should be changed
-                // for instance, this doesn't count turns of lost games against bot's score
-                // could just +/- turns based on bot win/loss
             botWins += Integer.parseInt(botAttrs[1]);
-            botTurns  += Integer.parseInt(botAttrs[2]);
+
+            if(Integer.parseInt(botAttrs[1]) == 1)
+                botWTurns  += Integer.parseInt(botAttrs[2]);
+            else
+                botLTurns  += Integer.parseInt((botAttrs[2]));
 
             try {
                 currLine = reader.readLine();
@@ -66,8 +71,8 @@ public class ResultsParser {
         }
 
         //last bot as currLine reaches null before adding it
-        //not the greatest way to handle it, but it works fine so w/e
-        botResults.add(new Bot(botId, botWins, botTurns));
+        //not the greatest way to handle it, but it works fine for now so w/e
+        botResults.add(new Bot(botId, botWins, botWTurns - botLTurns));
         botResults.sort((b1, b2) -> b2.score - b1.score);
     }
 }

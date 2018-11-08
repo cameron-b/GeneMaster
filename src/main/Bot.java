@@ -18,7 +18,7 @@ public class Bot {
     //Just made something up for testing, recommend changing
     private void scoreBot() {
         int winScore = wins * 100;
-        int turnsScore = (int)((100.0/turns) * 100);
+        int turnsScore = (int)((100.0/turns) * 10);
         score = winScore + turnsScore;
     }
 }

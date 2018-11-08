@@ -1,17 +1,20 @@
 package main;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.ArrayList;
 
-// commit test
-
 public class RunMaster {
-    final String results, botFormat;
+    private final String results, botFormat;
+    private final boolean swapRegions, testParams;
 
-    ArrayList<Bot> botResults = new ArrayList<>();
+    private ArrayList<Bot> botResults = new ArrayList<>();
 
     public RunMaster(String [] args) {
         results = args[0];
         botFormat = args[1];
+        swapRegions = args[2].equals("1");
+        testParams = args[3].equals("1");
     }
 
     public static void main(String[] args) {
@@ -19,7 +22,7 @@ public class RunMaster {
         master.run();
     }
 
-    public void run() {
+    private void run() {
         System.out.println("GeneMaster running");
 
         ResultsParser rp = new ResultsParser(results);
@@ -39,7 +42,7 @@ public class RunMaster {
         //Takes list of bot scores + handles reproduction
             //for first 50 bots, takes their results + modifies slightly, stores changes in the latter 50
             //e.g. if top bot was bot1.txt and 51st bot was bot51.txt, modify bot1.txt and store changes in bot51.txt
-        gc.reproduceBots(botResults);
+        gc.reproduceBots(botResults, swapRegions, testParams);
 
     }
 }

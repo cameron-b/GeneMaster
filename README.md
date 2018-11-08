@@ -16,7 +16,8 @@ scores each bot based on total wins/turns and sorts by score
 * can be changed under the ScoreBot method in the Bot class
 * turns is calculated in ResultsParser but could potentially be handled in Bot instead
 
-GeneController takes the top 50% of bots and reproduces them. currently does this by randomly changing parameters and storing the changes in the bots that performed poorly.
+GeneController takes the top 50% of bots and reproduces them. currently does this by swapping 2 vals of each parameter + stores the changes in the bots that performed poorly.
+
 to add a new parameter, do the following
 * create a boolean for it under the RunMaster constructor
 * add it to the arguments of reproduceBots under GeneController

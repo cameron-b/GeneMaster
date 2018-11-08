@@ -1,11 +1,8 @@
 package main;
 
-import java.lang.reflect.Array;
-import java.nio.Buffer;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -74,7 +71,17 @@ public class GeneController {
                     w.write(f2Contents.get(1));
 
                 w.flush();
-                //add more param swapping functions as needed
+
+                //template for more parameters
+                /*  w.newLine();
+                    w.flush();
+
+                    cLine1 = r1.readLine();
+                    if(testParams)
+                        w.write(swapStartingRegions(cLine1, f1, f2));
+                    else
+                        w.write(f2Contents.get(2)); */
+
             } catch (IOException e) {
                 System.out.println("Error: " + e);
             }

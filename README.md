@@ -6,8 +6,8 @@ Takes in results file that follows format:
 
 Takes in bot files that follow format:
 
-    [preferred starting regions]
-    [test parameter] (for example)
+    [param1] (preferred starting regions)
+    [param2] (example for testing)
     ... (more as needed)
 
 scores each bot based on total wins/turns and sorts by score

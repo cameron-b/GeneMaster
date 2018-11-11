@@ -22,36 +22,26 @@ public class GeneController {
         BufferedWriter w;
         int cut;
 
-        r1 = null;
-        r2 = null;
-        w = null;
         cut = (botResults.size() / 2);
-        f2Contents = new ArrayList<>();
 
         //for loop that cycles thru arraylist up until c2-1
         //pass both files to each param changing function
         for(int c1 = 0, c2 = cut; c1 < cut; c1++, c2++) {
             f1 = format + botResults.get(c1).id + ".txt";
             f2 = format + botResults.get(c2).id + ".txt";
+            f2Contents = new ArrayList<>();
 
             //System.out.println("Accessing " + file1 + " and overwriting " + file2);
 
             try {
                 r2 = new BufferedReader(new FileReader(f2));
-
                 cLine2 = r2.readLine();
-
                 while(cLine2 != null) {
                     f2Contents.add(cLine2);
-                    //System.out.println("f2:" + cLine2);
+                    System.out.println("f2:" + cLine2);
                     cLine2 = r2.readLine();
                 }
-            } catch (IOException e) {
-                System.out.println("Error: " + e);
-                System.exit(-1);
-            }
 
-            try {
                 r1 = new BufferedReader(new FileReader(f1));
                 w = new BufferedWriter((new FileWriter(f2)));
 
@@ -91,7 +81,6 @@ public class GeneController {
 
     private String swapStartingRegions(String params, String file1, String file2) {
         String[] prefRegions = params.split(" ");
-        BufferedWriter writer;
         String tempRegion;
         int r1, r2;
 

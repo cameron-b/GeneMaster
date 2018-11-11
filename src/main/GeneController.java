@@ -38,7 +38,7 @@ public class GeneController {
                 cLine2 = r2.readLine();
                 while(cLine2 != null) {
                     f2Contents.add(cLine2);
-                    System.out.println("f2:" + cLine2);
+                    //System.out.println("f2:" + cLine2);
                     cLine2 = r2.readLine();
                 }
 
